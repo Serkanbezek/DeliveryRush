@@ -40,7 +40,7 @@ public class PackageDelivery : MonoBehaviour
         int deliveryTunnelChildIndex = 1;
         Transform deliveryStation = deliveryTrigger.transform.parent;
         Transform deliveryTunnel = deliveryStation.GetChild(deliveryTunnelChildIndex);
-        Vector3 tunnelEntrance = new(0, -1.1f, 0);
+        Vector3 tunnelEntrance = new(0, -1f, 0);
         Vector3 tunnelExit = new(0, 1f, 0f);
         for (int i = DeliveryManager.Instance.PackagesOnPlayer.Count - 1; i >= 0; i--)
         {
