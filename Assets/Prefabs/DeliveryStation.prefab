@@ -398,7 +398,6 @@ MonoBehaviour:
   _tunnelWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  _packageCollector: {fileID: 5849273952243084276, guid: edf0b992311be1747b2f75729a65ae40, type: 3}
   _deliveryDelay: 0.08
   _deliveryDuration: 0.5
 --- !u!1 &3275991535157218317
@@ -544,7 +543,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6284367985165513026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
