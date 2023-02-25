@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4679076764044980945}
   - component: {fileID: 4679076764044980947}
-  - component: {fileID: 2921324639523016918}
+  - component: {fileID: -5409461143114420179}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
@@ -216,7 +216,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2921324639523016918
+--- !u!114 &-5409461143114420179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,17 +225,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4679076764044980942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d827a4c14f933f4e8b09cbca1a0fb74, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c25648fee16c144ebd709a330051a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _pushPower: 10
   _pushDuration: 1.5
-  _obstacleEndPosX: 0
-  _obstacleMoveDuration: 0
-  _obstacleRotationDuration: 0
-  _isObstacleMovingOnX: 0
-  _isObstacleRotating: 0
-  _rotateVector: {x: 0, y: 0, z: 0}
 --- !u!1 &5335830988507578458
 GameObject:
   m_ObjectHideFlags: 0
