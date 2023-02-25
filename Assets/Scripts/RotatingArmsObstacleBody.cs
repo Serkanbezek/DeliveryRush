@@ -18,6 +18,6 @@ public class RotatingArmsObstacleBody : Obstacle
 
     private void RotateObstacleBody()
     {
-        transform.DORotate(_rotateVector, _rotationDuration).SetLoops(-1).SetEase(Ease.Linear);
+        transform.DORotate(_rotateVector, _rotationDuration).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
     }
 }
