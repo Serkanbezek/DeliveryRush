@@ -149,12 +149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pushPower: 10
   _pushDuration: 1.5
-  _obstacleEndPosX: 0
-  _obstacleMoveDuration: 0
-  _obstacleRotationDuration: 0
-  _isObstacleMovingOnX: 0
-  _isObstacleRotating: 1
-  _rotateVector: {x: -90, y: 0, z: 180}
 --- !u!1001 &937890957365309292
 PrefabInstance:
   m_ObjectHideFlags: 0
