@@ -398,7 +398,7 @@ MonoBehaviour:
   _tunnelWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  _deliveryDelay: 0.08
+  _deliveryDelay: 0.09
   _deliveryDuration: 0.5
 --- !u!1 &3275991535157218317
 GameObject:
