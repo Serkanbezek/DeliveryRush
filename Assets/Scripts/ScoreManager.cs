@@ -20,9 +20,9 @@ public class ScoreManager : MonoBehaviour
         PackageDelivery.PackageDelivered -= UpdateScore;
     }
 
-    private void UpdateScore()
+    private void UpdateScore(int deliveryValue)
     {
-        _score += 10;
+        _score += deliveryValue;
         _scoreText.text = "Score: " + _score.ToString();
     }
 }
