@@ -6,11 +6,14 @@ using System;
 
 public class PackageDelivery : MonoBehaviour
 {
-    public static event Action PackageDelivered;
+    public static event Action PackageLeftPlayer;
+    public static event Action<int> PackageDelivered;
 
     [SerializeField] private Vector3[] _tunnelWayPoints = new Vector3[2];
     [SerializeField] private float _deliveryDelay = 0.08f;
     [SerializeField] private float _deliveryDuration = 0.5f;
+
+    [SerializeField] private int _deliveryValue;
 
     private Coroutine _deliveryCoroutine;
 
@@ -49,7 +52,8 @@ public class PackageDelivery : MonoBehaviour
                 GameObject package = DeliveryManager.Instance.PackagesOnPlayer[i];
                 DeliveryManager.Instance.PackagesOnPlayer.Remove(package);
                 package.transform.SetParent(deliveryTunnel);
-                PackageDelivered?.Invoke();
+                PackageLeftPlayer?.Invoke();
+                PackageDelivered?.Invoke(_deliveryValue);
                 _tunnelWayPoints[0] = tunnelEntrance;
                 _tunnelWayPoints[1] = tunnelExit;
                 package.transform.DOLocalPath(_tunnelWayPoints, _deliveryDuration);
