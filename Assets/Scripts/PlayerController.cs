@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         IsControllerDisabled = false;
     }
 
-    private void DisableController()
+    public void DisableController()
     {
         _moveSpeed = 0;
         _swipeSpeed = 0;
