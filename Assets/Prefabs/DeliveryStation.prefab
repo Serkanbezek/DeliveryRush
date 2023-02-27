@@ -400,6 +400,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   _deliveryDelay: 0.09
   _deliveryDuration: 0.5
+  _deliveryValue: 10
 --- !u!1 &3275991535157218317
 GameObject:
   m_ObjectHideFlags: 0
