@@ -18,13 +18,13 @@ public class PackageCollector : MonoBehaviour
     private void OnEnable()
     {
         DropPackages.PackageDropped += LowerPackageTargetPosition;
-        PackageDelivery.PackageDelivered += LowerPackageTargetPosition;
+        PackageDelivery.PackageLeftPlayer += LowerPackageTargetPosition;
     }
 
     private void OnDisable()
     {
         DropPackages.PackageDropped -= LowerPackageTargetPosition;
-        PackageDelivery.PackageDelivered -= LowerPackageTargetPosition;
+        PackageDelivery.PackageLeftPlayer -= LowerPackageTargetPosition;
     }
     private void OnTriggerEnter(Collider other)
     {
