@@ -6,23 +6,29 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _levelscoreText;
 
-    private int _score = 0;
+    private int _levelScore = 0;
 
     private void OnEnable()
     {
-        PackageDelivery.PackageDelivered += UpdateScore;
+        PackageDelivery.PackageDelivered += UpdateLevelScore;
     }
 
     private void OnDisable()
     {
-        PackageDelivery.PackageDelivered -= UpdateScore;
+        PackageDelivery.PackageDelivered -= UpdateLevelScore;
     }
 
-    private void UpdateScore(int deliveryValue)
+    private void UpdateLevelScore(int deliveryValue)
     {
-        _score += deliveryValue;
-        _scoreText.text = "Score: " + _score.ToString();
+        _levelScore += deliveryValue;
+        _levelscoreText.text = _levelScore.ToString();
     }
+
+    public int GetLevelScore()
+    {
+        return _levelScore;
+    }
+
 }
