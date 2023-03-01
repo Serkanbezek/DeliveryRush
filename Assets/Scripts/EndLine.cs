@@ -7,13 +7,21 @@ public class EndLine : MonoBehaviour
 {
     [SerializeField] private Transform _lateDeliveryTrigger;
     [SerializeField] private float _movementDuration;
+    [SerializeField] private ScoreManager _scoreManager;
     private void OnTriggerEnter(Collider other)
     {
         PlayerController playerController = other.GetComponent<PlayerController>();
         if (playerController != null)
         {
             playerController.DisableController();
-            MovePlayerToLateDeliveryTrigger(other.transform);
+            if (_scoreManager.GetLevelScore() == 0 && DeliveryManager.Instance.PackagesOnPlayer.Count == 0)
+            {
+                Debug.Log("You Lose");
+            }
+            else
+            {
+                MovePlayerToLateDeliveryTrigger(other.transform);
+            }
         }
     }
 
@@ -23,5 +31,7 @@ public class EndLine : MonoBehaviour
         targetPos.y = 0;
         player.DOMove(targetPos, _movementDuration).SetEase(Ease.Linear);
     }
+
+
 
 }
