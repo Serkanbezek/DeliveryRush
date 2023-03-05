@@ -8,6 +8,7 @@ public class EndLine : MonoBehaviour
     [SerializeField] private Transform _lateDeliveryTrigger;
     [SerializeField] private float _movementDuration;
     [SerializeField] private ScoreManager _scoreManager;
+
     private void OnTriggerEnter(Collider other)
     {
         PlayerController playerController = other.GetComponent<PlayerController>();
@@ -31,7 +32,4 @@ public class EndLine : MonoBehaviour
         targetPos.y = 0;
         player.DOMove(targetPos, _movementDuration).SetEase(Ease.Linear);
     }
-
-
-
 }
