@@ -17,7 +17,7 @@ public class TunnelMoveUp : MonoBehaviour
         }
     }
 
-    private void MoveTunnelUp()
+    public void MoveTunnelUp()
     {
         int deliveryTunnelChildIndex = 1;
         Transform deliveryStation = transform.parent;
