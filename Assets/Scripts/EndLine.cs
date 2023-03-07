@@ -7,8 +7,12 @@ public class EndLine : MonoBehaviour
 {
     [SerializeField] private Transform _lateDeliveryTrigger;
     [SerializeField] private float _movementDuration;
-    [SerializeField] private ScoreManager _scoreManager;
+    private ScoreManager _scoreManager;
 
+    private void Start()
+    {
+        _scoreManager = ScoreManager.Instance;
+    }
     private void OnTriggerEnter(Collider other)
     {
         PlayerController playerController = other.GetComponent<PlayerController>();
