@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class RoadStep : MonoBehaviour
 {
@@ -23,6 +22,7 @@ public class RoadStep : MonoBehaviour
         if (playerController != null)
         {
             _roadStepRenderer.SetPropertyBlock(_materialPropertyBlock);
+            ScoreManager.Instance.RaiseLevelEndScoreMultiplier();
         }
     }
 
