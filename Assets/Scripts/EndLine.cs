@@ -21,7 +21,7 @@ public class EndLine : MonoBehaviour
             playerController.DisableController();
             if (_scoreManager.GetLevelScore() == 0 && DeliveryManager.Instance.PackagesOnPlayer.Count == 0)
             {
-                Debug.Log("You Lose");
+                UIManager.Instance.ActivateLevelFailedPanel();
             }
             else
             {
@@ -34,6 +34,6 @@ public class EndLine : MonoBehaviour
     {
         Vector3 targetPos = _lateDeliveryTrigger.transform.position;
         targetPos.y = 0;
-        player.DOMove(targetPos, _movementDuration).SetEase(Ease.Linear);
+        player.DOMove(targetPos, _movementDuration).SetEase(Ease.Linear).SetLink(player.gameObject);
     }
 }

@@ -59,6 +59,7 @@ public class DropPackages : MonoBehaviour
     private void Drop(float dropDistanceZ, int packageIndex)
     {
         GameObject package = DeliveryManager.Instance.PackagesOnPlayer[packageIndex];
+        package.transform.DOKill(false);
         DeliveryManager.Instance.PackagesOnPlayer.Remove(package);
         PackageDropped?.Invoke();
         package.transform.SetParent(null);
@@ -66,7 +67,8 @@ public class DropPackages : MonoBehaviour
         endPos.z += dropDistanceZ + UnityEngine.Random.Range(-_distanceOffsetLimitZ, _distanceOffsetLimitZ);
         endPos.x = Mathf.Clamp(endPos.x, -RoadLimitX, RoadLimitX);
         endPos.y = _packageDefaultPositionY;
-        package.transform.DOJump(endPos, _jumpPower, _jumpNum, _jumpDuration).SetEase(Ease.OutBounce).OnComplete(() =>
+        package.transform.DOJump(endPos, _jumpPower, _jumpNum, _jumpDuration).SetEase(Ease.OutBounce).SetLink(package)
+            .OnComplete(() =>
         Destroy(package));
     }
 

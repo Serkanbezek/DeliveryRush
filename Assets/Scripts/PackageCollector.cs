@@ -40,7 +40,8 @@ public class PackageCollector : MonoBehaviour
         package.transform.SetParent(_packageHolder);
         DeliveryManager.Instance.PackagesOnPlayer.Add(package);
         RaisePackageTargetPosition();
-        package.transform.DOLocalJump(_newPackageTargetPosition, _packageJumpPower, _packageJumpNum, _packageJumpDuration).SetEase(Ease.Linear);
+        package.transform.DOLocalJump(_newPackageTargetPosition, _packageJumpPower, _packageJumpNum, _packageJumpDuration)
+            .SetEase(Ease.Linear).SetLink(package);
     }
 
     private void LowerPackageTargetPosition()

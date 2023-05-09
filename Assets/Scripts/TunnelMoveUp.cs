@@ -22,6 +22,6 @@ public class TunnelMoveUp : MonoBehaviour
         int deliveryTunnelChildIndex = 1;
         Transform deliveryStation = transform.parent;
         Transform deliveryTunnel = deliveryStation.GetChild(deliveryTunnelChildIndex);
-        deliveryTunnel.DOLocalMoveY(_tunnelEndPos, _tunnelMoveDuration).SetEase(Ease.InBack);
+        deliveryTunnel.DOLocalMoveY(_tunnelEndPos, _tunnelMoveDuration).SetEase(Ease.InBack).SetLink(deliveryTunnel.gameObject);
     }
 }

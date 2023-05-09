@@ -40,7 +40,8 @@ public class StartEndGame : MonoBehaviour
             float levelScore = _scoreManager.GetLevelScore();
             float distanceToMove = levelScore / 5f + 4f;
             yield return new WaitForSeconds(1f);
-            other.transform.DOMoveZ(other.transform.position.z + distanceToMove, 4).SetEase(Ease.OutQuart).OnComplete(() =>
+            other.transform.DOMoveZ(other.transform.position.z + distanceToMove, 4).SetEase(Ease.OutQuart).SetLink(other.gameObject)
+                .OnComplete(() =>
             _scoreManager.MultiplyLevelScore());
         }
 

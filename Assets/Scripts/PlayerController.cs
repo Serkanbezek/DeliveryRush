@@ -5,21 +5,28 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _swipeSpeed;
+    [SerializeField] private float _swipeSpeedOffSet = 324;
     [SerializeField] private float _smoothTime;
-    [SerializeField] private GameInput _gameInput;
+    
+    public bool IsControllerDisabled = false;
 
     private const float HorizontalLimit = 3f;
 
+    private float _swipeSpeed;
     private float _defaultMoveSpeed;
     private float _defaultSwipeSpeed;
+    private float _lastFrameFingerPosX;
     private Vector3 _playerVelocity = Vector3.zero;
-    public bool IsControllerDisabled = false;
+    
 
-    private void Start()
+    private void Awake()
     {
         _defaultMoveSpeed = _moveSpeed;
-        _defaultSwipeSpeed = _swipeSpeed;
+        _defaultSwipeSpeed = _swipeSpeedOffSet / Screen.width;
+    }
+    private void Start()
+    {
+        DisableController();
     }
 
     private void Update()
@@ -31,9 +38,9 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayerOnXAxis()
     {
-        float inputValue = _gameInput.GetMovementValue();
+        float inputValue = GetInputValue();
         Vector3 targetPos = transform.position;
-        targetPos.x += (inputValue * _swipeSpeed);
+        targetPos.x += inputValue * _swipeSpeed;
         transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref _playerVelocity, _smoothTime);
     }
 
@@ -62,9 +69,28 @@ public class PlayerController : MonoBehaviour
         _swipeSpeed = 0;
     }
 
-    private void EnableController()
+    public void EnableController()
     {
         _moveSpeed = _defaultMoveSpeed;
         _swipeSpeed = _defaultSwipeSpeed;
+    }
+
+    private float GetInputValue()
+    {
+        float differenceX = 0;
+        if (Input.GetMouseButtonDown(0))
+        {
+            _lastFrameFingerPosX = Input.mousePosition.x;
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            differenceX = Input.mousePosition.x - _lastFrameFingerPosX;
+            _lastFrameFingerPosX = Input.mousePosition.x;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            differenceX = 0f;
+        }
+        return differenceX;
     }
 }

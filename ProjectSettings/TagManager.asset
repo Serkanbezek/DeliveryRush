@@ -6,12 +6,11 @@ TagManager:
   tags:
   - Package
   - DeliveryTrigger
-  - Obstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 

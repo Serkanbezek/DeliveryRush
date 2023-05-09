@@ -12,7 +12,6 @@ public class PackageDelivery : MonoBehaviour
     [SerializeField] private Vector3[] _tunnelWayPoints = new Vector3[2];
     [SerializeField] private float _deliveryDelay = 0.08f;
     [SerializeField] private float _deliveryDuration = 0.5f;
-
     [SerializeField] private int _deliveryValue;
 
     private Coroutine _deliveryCoroutine;
@@ -50,13 +49,14 @@ public class PackageDelivery : MonoBehaviour
             if (DeliveryManager.Instance.PackagesOnPlayer.Count > i)
             {
                 GameObject package = DeliveryManager.Instance.PackagesOnPlayer[i];
+                package.transform.DOKill(false);
                 DeliveryManager.Instance.PackagesOnPlayer.Remove(package);
                 package.transform.SetParent(deliveryTunnel);
                 PackageLeftPlayer?.Invoke();
                 PackageDelivered?.Invoke(_deliveryValue);
                 _tunnelWayPoints[0] = tunnelEntrance;
                 _tunnelWayPoints[1] = tunnelExit;
-                package.transform.DOLocalPath(_tunnelWayPoints, _deliveryDuration);
+                package.transform.DOLocalPath(_tunnelWayPoints, _deliveryDuration).SetLink(package);
                 yield return new WaitForSeconds(_deliveryDelay);
             }
         }
